@@ -10,6 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: stoplightio/spectral-action@latest
+      - name: Archive Report
+        uses: actions/upload-artifact@v3
         with:
           name: openapi-linting-report
           path: report.txt
