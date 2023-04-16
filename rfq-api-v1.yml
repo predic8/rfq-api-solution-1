@@ -14,7 +14,7 @@ paths:
     post:
       tags:
         - Quote
-      description: Request a quoute
+      description: Request a quote
       operationId: getQuote
       requestBody:
         content:
