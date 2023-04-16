@@ -22,7 +22,7 @@ paths:
             schema:
               $ref: "#/components/schemas/Quotation"
       responses:
-        '999':
+        '666':
           description: OK
 
 components:
