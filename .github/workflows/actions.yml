@@ -11,5 +11,5 @@ jobs:
       - uses: actions/checkout@v3
       - uses: stoplightio/spectral-action@latest
         with:
-            name: openapi-linting-report
-            path: report.txt
+          name: openapi-linting-report
+          path: report.txt
