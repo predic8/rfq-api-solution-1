@@ -1,8 +1,12 @@
+name: OpenAPI Checks
+
 on:
   - push
 
 jobs:
   build:
+    name: Linting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Building..."
+      - uses: actions/checkout@v2
+      - uses: stoplightio/spectral-action@latest
