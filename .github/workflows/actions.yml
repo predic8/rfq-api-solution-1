@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: stoplightio/spectral-action@latest
       - uses: stoplightio/spectral-owasp-ruleset@v1.4.3 
+      - uses: stoplightio/spectral-action@latest
