@@ -10,3 +10,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: stoplightio/spectral-action@latest
+      - uses:  stoplightio/spectral-owasp-ruleset 

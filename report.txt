@@ -1,0 +1,25 @@
+
+[4m/Users/thomas/tmp/kurs/api-lifecycle-workshop/rfq-api/rfq-api-v1.oas.yml[24m
+ 14:10        [31merror[39m  owasp:api2:2019-protection-global-unsafe         This operation is not protected by any security scheme.                 paths./rfqs.post
+ 14:10  [34minformation[39m  owasp:api2:2019-protection-global-unsafe-strict  This operation is not protected by any security scheme.                 paths./rfqs.post
+ 24:17      [33mwarning[39m  owasp:api3:2019-define-error-responses-401       Operation is missing responses[401].                                    paths./rfqs.post.responses
+ 24:17      [33mwarning[39m  owasp:api3:2019-define-error-responses-401       Operation is missing responses[401].content.                            paths./rfqs.post.responses
+ 24:17      [33mwarning[39m  owasp:api3:2019-define-error-responses-500       Operation is missing responses[500].                                    paths./rfqs.post.responses
+ 24:17      [33mwarning[39m  owasp:api3:2019-define-error-responses-500       Operation is missing responses[500].content.                            paths./rfqs.post.responses
+ 24:17      [33mwarning[39m  owasp:api3:2019-define-error-validation          Missing error response of either 400, 422 or 4XX.                       paths./rfqs.post.responses
+ 24:17      [33mwarning[39m  owasp:api4:2019-rate-limit-responses-429         Operation is missing rate limiting response in responses[429].          paths./rfqs.post.responses
+ 24:17      [33mwarning[39m  owasp:api4:2019-rate-limit-responses-429         Operation is missing rate limiting response in responses[429].content.  paths./rfqs.post.responses
+ 25:15        [31merror[39m  owasp:api4:2019-rate-limit                       All 2XX and 4XX responses should define rate limiting headers.          paths./rfqs.post.responses[201]
+ 33:12        [31merror[39m  owasp:api4:2019-integer-format                   Schema of type integer must specify format (int32 or int64).            components.schemas.Quotation.properties.id
+ 33:12        [31merror[39m  owasp:api4:2019-integer-limit-legacy             Schema of type integer must specify minimum and maximum.                components.schemas.Quotation.properties.id
+ 35:17        [31merror[39m  owasp:api4:2019-string-limit                     Schema of type string must specify maxLength, enum, or const.           components.schemas.Quotation.properties.product
+ 35:17        [31merror[39m  owasp:api4:2019-string-restricted                Schema of type string must specify a format, pattern, enum, or const.   components.schemas.Quotation.properties.product
+ 37:18        [31merror[39m  owasp:api4:2019-integer-format                   Schema of type integer must specify format (int32 or int64).            components.schemas.Quotation.properties.quantity
+ 37:18        [31merror[39m  owasp:api4:2019-integer-limit-legacy             Schema of type integer must specify minimum and maximum.                components.schemas.Quotation.properties.quantity
+ 41:18        [31merror[39m  owasp:api4:2019-string-limit                     Schema of type string must specify maxLength, enum, or const.           components.schemas.Quotation.properties.shipment
+ 41:18        [31merror[39m  owasp:api4:2019-string-restricted                Schema of type string must specify a format, pattern, enum, or const.   components.schemas.Quotation.properties.shipment
+ 43:14        [31merror[39m  owasp:api4:2019-string-limit                     Schema of type string must specify maxLength, enum, or const.           components.schemas.Quotation.properties.mode
+ 43:14        [31merror[39m  owasp:api4:2019-string-restricted                Schema of type string must specify a format, pattern, enum, or const.   components.schemas.Quotation.properties.mode
+
+[31m[1m✖ 20 problems (12 errors, 7 warnings, 1 info, 0 hints)[22m[39m
+[31m[1m[22m[39m
