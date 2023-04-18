@@ -56,3 +56,4 @@ components:
           maxLength: 3
         feld:
           type: string
+          maxLength: 10
