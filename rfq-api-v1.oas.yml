@@ -6,7 +6,7 @@ info:
   contact:
     email: bayer@predic8.de
 servers:
-  - url: https://api.server.test/v1
+  - url: https://rfq-server.azurewebsites.net/v1
 tags:
   - name: Quote
 paths:
@@ -54,6 +54,3 @@ components:
           type: string
           pattern: "[A-Z]{3}"
           maxLength: 3
-        feld:
-          type: string
-          maxLength: 10
