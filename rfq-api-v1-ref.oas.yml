@@ -33,7 +33,7 @@ components:
         id:
           type: string
           format: uuid
-        article:
+        product:
           type: string
           maxLength: 20
           pattern: '(\w+\W*)*'

@@ -4,12 +4,55 @@ on:
   - pull_request
 
 jobs:
-  build:
-    name: Linting
+  Linting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version: '^1.13.1'
+      - run: go install github.com/tufin/oasdiff@latest 
+      - run: |
+          oasdiff -fail-on-diff -check-breaking -base rfq-api-v1-ref.oas.yml -revision rfq-api-v1.oas.yml >> version-report.txt 
+          if [ $? -eq 0 ]; then 
+            echo "pipeline succeeded and exits with status 0" 
+          else 
+            echo "error! OASDiff found breaking changes and the pipeline exits with status 1!"
+          fi  
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
       - run: spectral lint rfq-api-v1.oas.yml -D error
+ 
+
+
+  # check-diff-job:  
+  #   stage: check-diff
+  #   rules:
+  #     - changes: 
+  #       - fruitshop-v2.yaml
+  #   image: golang:latest
+  #   before_script:
+  #     - go install github.com/tufin/oasdiff@latest  
+  #   script:
+  #         - oasdiff -fail-on-diff -check-breaking -base fruitshop-v2-reference.yaml -revision fruitshop-v2.yaml >> version-report.txt
+  #         - |
+  #         if [ $? -eq 0 ]; then
+  #         echo "pipeline succeeded and exits with status 0"
+  #         else
+  #         echo "error! OASDiff found breaking changes and the pipeline exits with status 1!"
+  #         fi
+  #   after_script:
+  #     - git config --global user.name ci-bot
+  #     - git config --global user.email ci-bot@predic8.de
+  #     - echo "TODO Workaround for https://gitlab.com/gitlab-org/gitlab/-/issues/389060"
+  #     - git remote add gitlab_origin https://ACCESS_TOKEN:$ACCESS_TOKEN@${CI_PROJECT_URL#https://}.git
+  #     - git fetch --all --tags
+  #     - git checkout origin/main
+  #     - git checkout v1 -- fruitshop-v2.yaml
+  #     - git commit -am "revert fruitshop" 
+  #     - git push gitlab_origin HEAD:main -o ci.skip
+  #   artifacts:
+  #     when: always
+  #     paths:
+  #       - version-report.txt
