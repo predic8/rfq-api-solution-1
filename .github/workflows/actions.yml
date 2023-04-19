@@ -14,10 +14,11 @@ jobs:
       - run: go install github.com/tufin/oasdiff@latest 
       - run: |
           oasdiff -fail-on-diff -check-breaking -base rfq-api-v1-ref.oas.yml -revision rfq-api-v1.oas.yml >> version-report.txt 
+          cat version-report.txt 
           if [ $? -eq 0 ]; then 
-            echo "pipeline succeeded and exits with status 0" 
+            echo No breaking changes!" 
           else 
-            echo "error! OASDiff found breaking changes and the pipeline exits with status 1!"
+            echo "Breaking changes found!"
           fi  
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
