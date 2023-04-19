@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version: '^1.13.1'
-      - run: oasdiff -fail-on-diff -check-breaking -base fruitshop-v2-reference.yaml -revision fruitshop-v2.yaml >> version-report.txt
       - run: go install github.com/tufin/oasdiff@latest 
+      - run: oasdiff -fail-on-diff -check-breaking -base fruitshop-v2-reference.yaml -revision fruitshop-v2.yaml >> version-report.txt
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
