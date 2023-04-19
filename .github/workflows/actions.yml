@@ -4,8 +4,7 @@ on:
   - pull_request
 
 jobs:
-  build:
-    name: Linting
+  Linting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,7 +12,13 @@ jobs:
         with:
           go-version: '^1.13.1'
       - run: go install github.com/tufin/oasdiff@latest 
-      - run: oasdiff -fail-on-diff -check-breaking -base rfq-api-v1-ref.oas.yml -revision rfq-api-v1.oas.yml >> version-report.txt
+      - run: |
+          oasdiff -fail-on-diff -check-breaking -base rfq-api-v1-ref.oas.yml -revision rfq-api-v1.oas.yml >> version-report.txt 
+          if [ $? -eq 0 ]; then 
+            echo "pipeline succeeded and exits with status 0" 
+          else 
+            echo "error! OASDiff found breaking changes and the pipeline exits with status 1!"
+          fi  
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
